@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.9.13 on win32)" generated="20230907 16:38:37.757" rpa="false" schemaversion="4">
+<suite id="s1" name="Testcases" source="C:\Users\msm618\PycharmProjects\RobotActivity\RobotActivity\Testcases.robot">
+<test id="s1-t1" name="Verify Response has Pagination" line="19">
+<kw name="Session Creation" library="resource" type="SETUP">
+<doc>Creates Session</doc>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${baseurl}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230907 16:38:38.017" level="INFO">Creating Session using : alias=mysession, url=https://gorest.co.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230907 16:38:38.016" endtime="20230907 16:38:38.017"/>
+</kw>
+<status status="PASS" starttime="20230907 16:38:38.016" endtime="20230907 16:38:38.017"/>
+</kw>
+<kw name="Get Request" library="resource">
+<var>${response}</var>
+<arg>/public/v2/users</arg>
+<arg>200</arg>
+<arg>${headers}</arg>
+<doc>Perform Get request and verify the status</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${url}</arg>
+<arg>${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230907 16:38:38.748" level="INFO">GET Request : url=https://gorest.co.in/public/v2/users?Create%20Dictionary%20Content-Type=application/json%20Authorization=BearerCreate%20Dictionary 
+ path_url=/public/v2/users?Create%20Dictionary%20Content-Type=application/json%20Authorization=BearerCreate%20Dictionary 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230907 16:38:38.748" level="INFO">GET Response : url=https://gorest.co.in/public/v2/users?Create%20Dictionary%20Content-Type=application/json%20Authorization=BearerCreate%20Dictionary 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Sep 2023 11:08:39 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0, private, must-revalidate', 'etag': 'W/"e218f7ad4499c8f9b6f38fcb58a80333"', 'referrer-policy': 'strict-origin-when-cross-origin', 'vary': 'Origin', 'x-content-type-options': 'nosniff', 'x-download-options': 'noopen', 'x-frame-options': 'SAMEORIGIN', 'x-links-current': 'https://gorest.co.in/public/v2/users?page=1', 'x-links-next': 'https://gorest.co.in/public/v2/users?page=2', 'x-links-previous': '', 'x-pagination-limit': '10', 'x-pagination-page': '1', 'x-pagination-pages': '289', 'x-pagination-total': '2889', 'x-permitted-cross-domain-policies': 'none', 'x-request-id': 'beaa202a-a845-4634-ab07-d7d02c39f1e1', 'x-runtime': '0.038085', 'x-xss-protection': '0', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=G7uXZLazfil0YtngHuqIOf3OauUy2P1BK%2Bb6XFaXrEUyO8qLQBB2rlUqiTLcB%2Fsty7o9OXOMWHtOJRrPX6CUOQzkbr5srYMQNuX9sEiU0jdRKVaEcR2JCuKdBLw62Rw%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '802e7eb5e9d948c1-LHR', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=[{"id":5122704,"name":"Rev. Aanand Bandopadhyay","email":"aanand_bandopadhyay_rev@mccullough.test","gender":"female","status":"active"},{"id":5122700,"name":"Dharani Mehra","email":"dharani_mehra@thiel-dickens.example","gender":"male","status":"inactive"},{"id":5122698,"name":"Anand Swarup Gandhi","email":"anand_gandhi_swarup@marks.example","gender":"female","status":"inactive"},{"id":5122695,"name":"Ekaaksh Nayar","email":"nayar_ekaaksh@padberg.example","gender":"male","status":"inactive"},{"id":5122694,"name":"Dr. Darshan Jha","email":"darshan_jha_dr@gerlach.example","gender":"male","status":"inactive"},{"id":5122692,"name":"Daksha Agarwal","email":"daksha_agarwal@weissnat-lowe.test","gender":"female","status":"inactive"},{"id":5122691,"name":"Aadinath Singh","email":"aadinath_singh@raynor.example","gender":"female","status":"active"},{"id":5122690,"name":"Aagam Kapoor DC","email":"aagam_kapoor_dc@dare.test","gender":"female","status":"active"},{"id":5122689,"name":"Ramaa Gandhi DO","email":"ramaa_gandhi_do@feest.test","gender":"female","status":"inactive"},{"id":5122688,"name":"Rev. Asha Nambeesan","email":"asha_rev_nambeesan@jacobi.test","gender":"male","status":"active"}] 
+ </msg>
+<msg timestamp="20230907 16:38:38.748" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230907 16:38:38.017" endtime="20230907 16:38:38.748"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${actual_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230907 16:38:38.749" level="INFO">${actual_status_code} = 200</msg>
+<status status="PASS" starttime="20230907 16:38:38.748" endtime="20230907 16:38:38.749"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${actual_status_code}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230907 16:38:38.749" endtime="20230907 16:38:38.749"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" starttime="20230907 16:38:38.749" endtime="20230907 16:38:38.749"/>
+</return>
+<msg timestamp="20230907 16:38:38.749" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230907 16:38:38.017" endtime="20230907 16:38:38.749"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.headers}</arg>
+<arg>x-pagination-page</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230907 16:38:38.750" endtime="20230907 16:38:38.751"/>
+</kw>
+<kw name="Get Request" library="resource">
+<var>${response_with_page}</var>
+<arg>/public/v2/users?page=1&amp;per_page=10</arg>
+<arg>200</arg>
+<doc>Perform Get request and verify the status</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${url}</arg>
+<arg>${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230907 16:38:38.989" level="INFO">GET Request : url=https://gorest.co.in/public/v2/users?page=1&amp;per_page=10&amp;Create%20Dictionary%20Content-Type=application/json 
+ path_url=/public/v2/users?page=1&amp;per_page=10&amp;Create%20Dictionary%20Content-Type=application/json 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230907 16:38:38.989" level="INFO">GET Response : url=https://gorest.co.in/public/v2/users?page=1&amp;per_page=10&amp;Create%20Dictionary%20Content-Type=application/json 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Sep 2023 11:08:39 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0, private, must-revalidate', 'etag': 'W/"e218f7ad4499c8f9b6f38fcb58a80333"', 'referrer-policy': 'strict-origin-when-cross-origin', 'vary': 'Origin', 'x-content-type-options': 'nosniff', 'x-download-options': 'noopen', 'x-frame-options': 'SAMEORIGIN', 'x-links-current': 'https://gorest.co.in/public/v2/users?page=1', 'x-links-next': 'https://gorest.co.in/public/v2/users?page=2', 'x-links-previous': '', 'x-pagination-limit': '10', 'x-pagination-page': '1', 'x-pagination-pages': '289', 'x-pagination-total': '2889', 'x-permitted-cross-domain-policies': 'none', 'x-request-id': 'bbf94c44-dcec-4b3d-bc2b-9428c90f8e2f', 'x-runtime': '0.026285', 'x-xss-protection': '0', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=AQGFR5jSrfVQ%2FFHyQAsNKmPR9OK2ynYCHuNdjm3NoBDOlrV8BvGVbNqZ2mFx%2BRAT66trDfnb75On%2Bwxa52JZTjpqDp65b4gk9f9M3sj9DZytuYeQjh8v8SBTbnpKP%2Fk%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '802e7eb9ce7948c1-LHR', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=[{"id":5122704,"name":"Rev. Aanand Bandopadhyay","email":"aanand_bandopadhyay_rev@mccullough.test","gender":"female","status":"active"},{"id":5122700,"name":"Dharani Mehra","email":"dharani_mehra@thiel-dickens.example","gender":"male","status":"inactive"},{"id":5122698,"name":"Anand Swarup Gandhi","email":"anand_gandhi_swarup@marks.example","gender":"female","status":"inactive"},{"id":5122695,"name":"Ekaaksh Nayar","email":"nayar_ekaaksh@padberg.example","gender":"male","status":"inactive"},{"id":5122694,"name":"Dr. Darshan Jha","email":"darshan_jha_dr@gerlach.example","gender":"male","status":"inactive"},{"id":5122692,"name":"Daksha Agarwal","email":"daksha_agarwal@weissnat-lowe.test","gender":"female","status":"inactive"},{"id":5122691,"name":"Aadinath Singh","email":"aadinath_singh@raynor.example","gender":"female","status":"active"},{"id":5122690,"name":"Aagam Kapoor DC","email":"aagam_kapoor_dc@dare.test","gender":"female","status":"active"},{"id":5122689,"name":"Ramaa Gandhi DO","email":"ramaa_gandhi_do@feest.test","gender":"female","status":"inactive"},{"id":5122688,"name":"Rev. Asha Nambeesan","email":"asha_rev_nambeesan@jacobi.test","gender":"male","status":"active"}] 
+ </msg>
+<msg timestamp="20230907 16:38:38.989" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230907 16:38:38.751" endtime="20230907 16:38:38.989"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${actual_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230907 16:38:38.991" level="INFO">${actual_status_code} = 200</msg>
+<status status="PASS" starttime="20230907 16:38:38.990" endtime="20230907 16:38:38.991"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${actual_status_code}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230907 16:38:38.991" endtime="20230907 16:38:38.991"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" starttime="20230907 16:38:38.991" endtime="20230907 16:38:38.991"/>
+</return>
+<msg timestamp="20230907 16:38:38.991" level="INFO">${response_with_page} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230907 16:38:38.751" endtime="20230907 16:38:38.991"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary" type="TEARDOWN">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230907 16:38:38.992" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230907 16:38:38.992" endtime="20230907 16:38:38.992"/>
+</kw>
+<status status="PASS" starttime="20230907 16:38:38.016" endtime="20230907 16:38:38.992"/>
+</test>
+<status status="PASS" starttime="20230907 16:38:37.760" endtime="20230907 16:38:38.994"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Testcases">Testcases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
